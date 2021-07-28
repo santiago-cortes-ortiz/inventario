@@ -16,6 +16,7 @@ public class Categoria {
     @NotNull(message = "El nombre no debe ser nulo")
     @NotBlank(message = "El nombre no debe estar en blnaco")
     @Size(max = 50, message = "El nombre no debe de superar los 50 caracteres")
+    @Column( length = 50, nullable = false)
     private String nombre;
 
     public Categoria() {
