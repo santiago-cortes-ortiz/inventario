@@ -11,5 +11,5 @@ public interface ServicioProducto {
 
     Producto obtenerProductoPorId(Long id);
 
-    boolean eliminarProductoPorId(Long id);
+    boolean eliminarProductoPorId(Long id) throws Exception;
 }
