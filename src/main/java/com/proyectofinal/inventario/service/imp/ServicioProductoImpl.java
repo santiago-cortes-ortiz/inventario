@@ -5,6 +5,7 @@ import com.proyectofinal.inventario.repository.RepositorioProducto;
 import com.proyectofinal.inventario.service.ServicioProducto;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class ServicioProductoImpl implements ServicioProducto {
     }
 
     @Override
+    @Transactional
     public boolean eliminarProductoPorId(Long id) throws Exception {
         Optional<Producto> producto = repositorioProducto.findById(id);
         if (!producto.isPresent()){
