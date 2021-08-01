@@ -28,4 +28,17 @@ public class ControladorProducto {
     public ResponseEntity<List<Producto>> listarProductos(){
         return new ResponseEntity<>(servicioProducto.listarProductos(),HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable("id") Long id){
+        return new ResponseEntity<>(servicioProducto.obtenerProductoPorId(id),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity eliminarProductoPorId(@PathVariable("id") Long id)throws Exception{
+        return new ResponseEntity(servicioProducto.eliminarProductoPorId(id),HttpStatus.OK);
+    }
+
+
+
 }
