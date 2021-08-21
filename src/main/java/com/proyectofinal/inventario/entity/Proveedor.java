@@ -4,11 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "proveedores")
-public class Proveedor {
+public class Proveedor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
