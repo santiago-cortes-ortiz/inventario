@@ -22,6 +22,13 @@ public class RespuestaDTO<T> implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public RespuestaDTO(boolean fallo, int codigo, String mensaje, String timestamp) {
+        this.fallo = fallo;
+        this.codigo = codigo;
+        this.mensaje = mensaje;
+        this.timestamp = timestamp;
+    }
+
     public boolean isFallo() {
         return fallo;
     }
