@@ -33,7 +33,8 @@ public class ServicioProveedorImpl implements ServicioProveedor {
 
     @Override
     public Proveedor obtenerProveedorPorId(Long id) {
-        return null;
+        return repositorioProveedor.findById(id).orElseThrow(() ->
+        {throw new ProveedorException(Constantes.NO_EXISTE_PROVEEDOR);});
     }
 
     @Override
