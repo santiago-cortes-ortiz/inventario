@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @Column(name = "id_producto")
+    private Long idPrudcto;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
@@ -33,7 +33,7 @@ public class Producto {
     }
 
     public Producto(Long id, Categoria categoria, String nombre, Double peso, String unidadPeso) {
-        this.id = id;
+        this.idPrudcto = id;
         this.categoria = categoria;
         this.nombre = nombre;
         this.peso = peso;
@@ -41,11 +41,11 @@ public class Producto {
     }
 
     public Long getId() {
-        return id;
+        return idPrudcto;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idPrudcto = id;
     }
 
     public Categoria getCategoria() {
@@ -83,7 +83,7 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "id=" + id +
+                "id=" + idPrudcto +
                 ", categoria=" + categoria +
                 ", nombre='" + nombre + '\'' +
                 ", peso=" + peso +

@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.rmi.MarshalException;
+import java.util.List;
 
 @Entity
 @Table(name = "proveedores")
@@ -12,7 +13,8 @@ public class Proveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @Column(name = "id_proveedor")
+    private Long idProveedor;
 
     @Column(length = 50, nullable = false)
     @NotBlank(message = "El nombre no debe estar en blanco")
@@ -44,11 +46,20 @@ public class Proveedor {
     @Size(max = 16, message = "El telefono no debe de superar los 50 caracteres")
     private String telefono;
 
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "ordenes",
+            joinColumns = @JoinColumn(name = "id_proveedor"),
+            inverseJoinColumns = @JoinColumn(name = "id_producto")
+    )
+    private List<Producto> productos;
+
     public Proveedor() {
     }
 
     public Proveedor(Long id, String nombre, String direccion, String ciudad, String email, String telefono) {
-        this.id = id;
+        this.idProveedor = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -57,11 +68,11 @@ public class Proveedor {
     }
 
     public Long getId() {
-        return id;
+        return idProveedor;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idProveedor = id;
     }
 
     public String getNombre() {
@@ -104,10 +115,18 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
     @Override
     public String toString() {
         return "Proveedor{" +
-                "id=" + id +
+                "id=" + idProveedor +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", ciudad='" + ciudad + '\'' +
