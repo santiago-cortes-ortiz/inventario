@@ -8,6 +8,7 @@ import com.proyectofinal.inventario.util.Constantes;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicioProveedorImpl implements ServicioProveedor {
@@ -33,8 +34,11 @@ public class ServicioProveedorImpl implements ServicioProveedor {
 
     @Override
     public Proveedor obtenerProveedorPorId(Long id) {
-        return repositorioProveedor.findById(id).orElseThrow(() ->
-        {throw new ProveedorException(Constantes.NO_EXISTE_PROVEEDOR);});
+        Optional<Proveedor> buscarProveedor = repositorioProveedor.findById(id);
+        if (buscarProveedor.isPresent()){
+            return buscarProveedor.get();
+        }
+        throw new ProveedorException(Constantes.NO_EXISTE_PROVEEDOR);
     }
 
     @Override
