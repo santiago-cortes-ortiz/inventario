@@ -1,5 +1,8 @@
 package com.proyectofinal.inventario.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -8,26 +11,57 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "productos")
+@ApiModel
 public class Producto implements Serializable {
 
     @Id
     @Column(name = "id_producto")
+    @ApiModelProperty(
+            value = "Id del producto",
+            name = "idProducto",
+            dataType = "Long",
+            example = "1"
+    )
     private Long idPrudcto;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", nullable = false)
+    @ApiModelProperty(
+            value = "Categoria del producto al cual pertenece",
+            name = "categoria",
+            dataType = "Categoria",
+            example = "{'id':1,'nombre':'Tecnologia'}"
+    )
     private Categoria categoria;
 
     @Column(nullable = false, length = 50)
     @NotNull(message = "El nombre no debe ser nulo")
     @NotBlank(message = "El nombre no debe estar en blnaco")
     @Size(max = 50, message = "El nombre no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Nombre que identifica parte del producto",
+            name = "nombre",
+            dataType = "String",
+            example = "Xbox Series X"
+    )
     private String nombre;
 
     @Column(nullable = false)
+    @ApiModelProperty(
+            value = "Cantidad de peso del producto",
+            name = "peso",
+            dataType = "Double",
+            example = "4.3"
+    )
     private Double peso;
 
     @Column(nullable = false)
+    @ApiModelProperty(
+            value = "Unidad de medida para el peso",
+            name = "unidadPeso",
+            dataType = "String",
+            example = "KG"
+    )
     private String unidadPeso;
 
     public Producto() {

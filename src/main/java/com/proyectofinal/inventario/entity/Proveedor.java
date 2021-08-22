@@ -1,5 +1,8 @@
 package com.proyectofinal.inventario.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -9,41 +12,78 @@ import java.util.List;
 
 @Entity
 @Table(name = "proveedores")
+@ApiModel
 public class Proveedor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_proveedor")
+    @ApiModelProperty(
+            value = "Id del proveedor",
+            name = "idProveedor",
+            dataType = "Long",
+            example = "1"
+    )
     private Long idProveedor;
 
     @Column(length = 50, nullable = false)
     @NotBlank(message = "El nombre no debe estar en blanco")
     @NotNull(message = "El nombre no debe ser nulo")
     @Size(max = 50, message = "El nombre no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Nombre del proveedor",
+            name = "nombre",
+            dataType = "String",
+            example = "Amazon"
+    )
     private String nombre;
 
     @Column(length = 50, nullable = false)
     @NotBlank(message = "La direccion no debe estar en blanco")
     @NotNull(message = "La direccion no debe ser nulo")
     @Size(max = 50, message = "La direccion no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Direccion en la cual esta el proveedor",
+            name = "direccion",
+            dataType = "String",
+            example = "cra 6 #38 bis-19"
+    )
     private String direccion;
 
     @Column(length = 25, nullable = false)
     @NotBlank(message = "La ciudad no debe estar en blanco")
     @NotNull(message = "La ciudad no debe ser nulo")
     @Size(max = 25, message = "La ciudad no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Ciudad en la cual esta el proveedor",
+            name = "ciudad",
+            dataType = "String",
+            example = "Ibague"
+    )
     private String ciudad;
 
     @Column(length = 50, nullable = false)
     @NotBlank(message = "El email no debe estar en blanco")
     @NotNull(message = "El email no debe ser nulo")
     @Size(max = 50, message = "El email no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Email que pertenece al proveedor",
+            name = "email",
+            dataType = "String",
+            example = "componentesamazon@amazon.com"
+    )
     private String email;
 
     @Column(length = 16, nullable = false)
     @NotBlank(message = "El telefono no debe estar en blanco")
     @NotNull(message = "El telefono no debe ser nulo")
     @Size(max = 16, message = "El telefono no debe de superar los 50 caracteres")
+    @ApiModelProperty(
+            value = "Telefono del proveedor",
+            name = "telefono",
+            dataType = "String",
+            example = "1432513513"
+    )
     private String telefono;
 
 
@@ -52,6 +92,10 @@ public class Proveedor implements Serializable {
             name = "ordenes",
             joinColumns = @JoinColumn(name = "id_proveedor"),
             inverseJoinColumns = @JoinColumn(name = "id_producto")
+    )
+    @ApiModelProperty(
+            value = "Lista de productos de un proveedor",
+            name = "productos"
     )
     private List<Producto> productos;
 
