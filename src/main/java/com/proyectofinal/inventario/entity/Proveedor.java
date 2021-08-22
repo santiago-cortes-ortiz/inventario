@@ -16,7 +16,6 @@ import java.util.List;
 public class Proveedor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_proveedor")
     @ApiModelProperty(
             value = "Id del proveedor",
@@ -87,7 +86,7 @@ public class Proveedor implements Serializable {
     private String telefono;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(
             name = "ordenes",
             joinColumns = @JoinColumn(name = "id_proveedor"),

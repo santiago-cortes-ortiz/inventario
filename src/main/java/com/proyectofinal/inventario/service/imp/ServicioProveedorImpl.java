@@ -22,10 +22,7 @@ public class ServicioProveedorImpl implements ServicioProveedor {
 
     @Override
     public Proveedor guardarProveedor(Proveedor proveedor) {
-        if (!repositorioProveedor.findById(proveedor.getId()).isPresent()){
             return repositorioProveedor.save(proveedor);
-        }
-        throw new ProveedorException(Constantes.EXISTE_YA_UN_PROVEEDOR);
     }
 
     @Override

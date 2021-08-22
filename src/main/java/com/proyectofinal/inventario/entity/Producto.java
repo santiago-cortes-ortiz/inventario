@@ -22,9 +22,9 @@ public class Producto implements Serializable {
             dataType = "Long",
             example = "1"
     )
-    private Long idPrudcto;
+    private Long idProducto;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_categoria", nullable = false)
     @ApiModelProperty(
             value = "Categoria del producto al cual pertenece",
@@ -68,7 +68,7 @@ public class Producto implements Serializable {
     }
 
     public Producto(Long id, Categoria categoria, String nombre, Double peso, String unidadPeso) {
-        this.idPrudcto = id;
+        this.idProducto = id;
         this.categoria = categoria;
         this.nombre = nombre;
         this.peso = peso;
@@ -76,11 +76,11 @@ public class Producto implements Serializable {
     }
 
     public Long getId() {
-        return idPrudcto;
+        return idProducto;
     }
 
     public void setId(Long id) {
-        this.idPrudcto = id;
+        this.idProducto = id;
     }
 
     public Categoria getCategoria() {
@@ -118,7 +118,7 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "Producto{" +
-                "id=" + idPrudcto +
+                "id=" + idProducto +
                 ", categoria=" + categoria +
                 ", nombre='" + nombre + '\'' +
                 ", peso=" + peso +

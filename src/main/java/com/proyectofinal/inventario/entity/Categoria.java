@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @ApiModelProperty(
             value = "Id de la categoria",
             name = "id",
