@@ -5,6 +5,7 @@ import com.proyectofinal.inventario.exception.ProveedorException;
 import com.proyectofinal.inventario.repository.RepositorioProveedor;
 import com.proyectofinal.inventario.service.ServicioProveedor;
 import com.proyectofinal.inventario.util.Constantes;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +44,11 @@ public class ServicioProveedorImpl implements ServicioProveedor {
 
     @Override
     public boolean eliminarProveedorPorId(Long id) {
-        return false;
+        try {
+            repositorioProveedor.deleteById(id);
+            return true;
+        }catch (EmptyResultDataAccessException e){
+            return false;
+        }
     }
 }
