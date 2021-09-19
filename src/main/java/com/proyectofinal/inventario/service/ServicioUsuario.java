@@ -1,6 +1,5 @@
 package com.proyectofinal.inventario.service;
 
-import com.proyectofinal.inventario.entity.Proveedor;
 import com.proyectofinal.inventario.entity.Usuario;
 
 import java.util.List;

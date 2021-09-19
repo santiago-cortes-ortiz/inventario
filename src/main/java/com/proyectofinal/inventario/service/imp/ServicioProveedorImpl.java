@@ -44,7 +44,7 @@ public class ServicioProveedorImpl implements ServicioProveedor {
         try {
             repositorioProveedor.deleteById(id);
             return true;
-        }catch (EmptyResultDataAccessException e){
+        }catch (ProveedorException e){
             return false;
         }
     }
