@@ -8,6 +8,8 @@ import java.util.List;
 public interface ServicioProveedor {
     Proveedor guardarProveedor(Proveedor proveedor);
 
+    Proveedor modificarProveedor(Proveedor proveedor);
+
     List<Proveedor> listarProveedor();
 
     Proveedor obtenerProveedorPorId(Long id);

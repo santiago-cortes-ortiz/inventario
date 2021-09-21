@@ -26,6 +26,11 @@ public class ServicioProveedorImpl implements ServicioProveedor {
     }
 
     @Override
+    public Proveedor modificarProveedor(Proveedor proveedor) {
+        return repositorioProveedor.save(proveedor);
+    }
+
+    @Override
     public List<Proveedor> listarProveedor() {
         return repositorioProveedor.findAll();
     }

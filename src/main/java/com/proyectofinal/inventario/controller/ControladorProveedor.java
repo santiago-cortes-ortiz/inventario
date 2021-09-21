@@ -40,5 +40,16 @@ public class ControladorProveedor {
         );
     }
 
+    @PutMapping
+    public RespuestaDTO<Proveedor> modificarProveedor(@RequestBody @Valid Proveedor proveedor){
+        return new RespuestaDTO<>(
+                false,
+                HttpStatus.NO_CONTENT.value(),
+                "Se actualizo con exito el proveedor",
+                servicioProveedor.modificarProveedor(proveedor),
+                String.valueOf(System.currentTimeMillis())
+        );
+    }
+
 
 }
