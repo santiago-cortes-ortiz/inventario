@@ -3,10 +3,7 @@ package com.proyectofinal.inventario.controller;
 import com.proyectofinal.inventario.dto.RespuestaDTO;
 import com.proyectofinal.inventario.entity.Proveedor;
 import com.proyectofinal.inventario.service.ServicioProveedor;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +11,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/proveedores")
+@Api(
+        tags = "Controlador proveedor",
+        value = "Controlador Rest para gestionar el proveedor"
+)
 public class ControladorProveedor {
 
     private final ServicioProveedor servicioProveedor;
